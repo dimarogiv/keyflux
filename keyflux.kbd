@@ -1,0 +1,148 @@
+(defvar
+  tap-timeout 500
+  hold-timeout 150
+  )
+
+(defcfg
+  process-unmapped-keys yes
+  block-unmapped-keys yes
+  log-layer-changes no
+  delegate-to-first-layer yes
+  )
+
+(defsrc
+ esc f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 home end ins del
+  grv  1    2    3    4    5         7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+       a    s    d    f    g         j    k    l    ;    '
+                 c    v    b    n    m    ,                pgup  up  pgdn
+            lalt           spc            ralt             left down right
+)
+
+(defalias
+  l3 (layer-toggle thirdlayer)
+  lay (tap-hold $tap-timeout $hold-timeout tab (layer-toggle layers))
+  ukr (layer-switch ukrainian)
+  dv (layer-switch base)
+  fn (tap-hold $tap-timeout $hold-timeout S-4 (layer-toggle fn_layer))
+  )
+
+(defalias
+ um_lc (multi lctrl (layer-toggle base))
+ um_rc (multi rctrl (layer-toggle base))
+ um_la (multi lalt (layer-toggle base))
+ um_ra (multi ralt (layer-toggle base))
+ )
+
+(defalias
+  й (multi caps q)
+  ц (multi caps w)
+  у (multi caps e)
+  к (multi caps r)
+  е (multi caps t)
+  н (multi caps y)
+  г (multi caps u)
+  ш (multi caps i)
+  щ (multi caps o)
+  з (multi caps p)
+  х (multi caps [)
+  ї (multi caps ])
+  ф (multi caps a)
+  і (multi caps s)
+  в (multi caps d)
+  а (multi caps f)
+  п (multi caps g)
+  р (multi caps h)
+  о (multi caps j)
+  л (multi caps k)
+  д (multi caps l)
+  ж (multi caps ;)
+  є (multi caps ')
+  я (multi caps z)
+  ч (multi caps x)
+  с (multi caps c)
+  м (multi caps v)
+  и (multi caps b)
+  т (multi caps n)
+  ь (multi caps m)
+  б (multi caps ,)
+  ю (multi caps .)
+  )
+
+(defalias
+  fn_esc @fn
+  fn_f1 S-7
+  fn_f2 [
+  fn_f3 S-[
+  fn_f4 S-]
+  fn_f5 S-9
+  fn_f6 =
+  fn_f7 _
+  fn_f8 S-]
+  fn_f9 S-8
+  fn_f10 S-0
+  fn_f11 S-=
+  fn_f12 ]
+  fn_home S-1
+  fn_end S-3
+  fn_ins _
+  fn_del _
+  )
+
+(deflayer base
+  @fn_esc @fn_f1   @fn_f2   @fn_f3   @fn_f4  @fn_f5 @fn_f6   @fn_f7   @fn_f8
+  @fn_f9   @fn_f10 @fn_f11  @fn_f12 @fn_home @fn_end @fn_ins @fn_del
+  @lay ;    ,    .    p    y         f    g    c    r    l    /    bspc
+  esc  a    o    e    u    i    S-2  d    h    t    n    s    -    ret
+       '    q    j    k    x         b    m    w    v    z
+                 @l3  spc  lalt ralt spc  @l3             pgup  up  pgdn
+            lctl          lsft            rctl            left down right
+ )
+
+(deflayer thirdlayer
+  _    _    _    _    _    _    _    _    _    _    _    _  _ _ _ _ _
+  @lay ;    7    8    9    \         S-\  S-[  S-3  S-8  S-]  S-`  /
+  _    0    4    5    6    =    S-2  S-5  S-9  S-7  S-4  S-0  -    .
+       '    1    2    3    `         S-6  [    +    S-1  ]
+                 @l3  spc  lalt ralt spc @l3             pgup  up  pgdn
+            lctl          lsft            rctl           left down right
+ )
+
+(deflayer ukrainian
+  @fn_esc @fn_f1   @fn_f2   @fn_f3   @fn_f4  @fn_f5 @fn_f6   @fn_f7   @fn_f8
+  @fn_f9   @fn_f10 @fn_f11  @fn_f12 @fn_home @fn_end @fn_ins @fn_del
+  @lay @й   @ц   @у   @к   @е        @н   @г   @ш   @щ   @з   @х   bspc
+  esc  @ф   @і   @в   @а   @п   @ї   @р   @о   @л   @д   @ж   @є   ret
+       @я   @ч   @с   @м   @и        @т   @ь   @б   @ю   ,
+                 @l3  spc  @um_la @um_ra spc @l3            pgup up   pgdn 
+            @um_lc         lsft           @um_rc          left down right
+)
+
+
+(deflayer layers
+  _    _    _    _    _    _    _    _    _    _    _    _   _   _ _ _ _
+  @lay @ukr @dv  _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    -    _    _
+       _    _    _    _    _         _    _    _    _    _
+                 _    _    _    _    _    _               _ _ _
+            _              _              _               _ _ _
+ )
+
+(deflayer fn_layer
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11 f12 home end ins del
+  _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    -    _    _
+       _    _    _    _    _         _    _    _    _    _
+                 _    _    lalt ralt _    _              _ _ _
+            lctrl          lsft           rctrl          _ _ _
+ )
+
+(deflayer empty
+  _    _    _    _    _    _    _    _    _    _    _    _   _   _ _ _ _
+  _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    -    _    _
+       _    _    _    _    _         _    _    _    _    _
+                 _    _    _    _    _    _              _ _ _
+            _              _              _              _ _ _
+ )
+
