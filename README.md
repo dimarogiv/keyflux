@@ -19,22 +19,27 @@ The main layout looks like the regular Dvorak layout with the upper row of
 special symbols arranged like in programmers Dvorak and `Esc` right near the left
 pinkie for easy access for Vim users. All modifier keys are accessed with
 thumbs.
+
 ![picture of the main layer](resources/main_layer.jpg "Main layer")
 
 To access special symbols and digits hold one of the `Lvl3` keys. If you want to
 use digits hold the right `Lvl3`, and use the left one otherwise.
+
 ![picture of the third layer](resources/third_layer.jpg "Lvl3 layer")
 
 To access `F1-12` keys press and hold the `$` key for more than 150 ms.
+
 ![picture of Fn layer](resources/fn_layer.jpg "Fn layer")
 
 To switch to an alternative language layout there is `Lt` key. Holt it for more
 than 150 ms and choose your layout.
+
 ![picture of layout layer](resources/layout_layer.jpg "Layout layer")
 
 Since I used Ukrainian layout, which has too many letters, I needed to hide some
 punctuation signs under some of the commonly used keys.
 To access `.` hold `Lvl3` key, and to access `?` hold `Lvl3-Shift`.
+
 ![picture of Ukrainian layer](resources/ukrainian_layer.jpg)
 
 ## Installation
